@@ -18,4 +18,8 @@ public class Product {
     private String categories;
     private String name;
     private Long price;
+
+
+
+
 }
