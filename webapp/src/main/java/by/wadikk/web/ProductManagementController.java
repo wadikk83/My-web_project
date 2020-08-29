@@ -1,6 +1,5 @@
 package by.wadikk.web;
 
-import by.wadikk.repository.model.Product;
 import by.wadikk.service.ProductFilter;
 import by.wadikk.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,5 @@
 package by.wadikk.service;
 
-import by.wadikk.repository.model.Product;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

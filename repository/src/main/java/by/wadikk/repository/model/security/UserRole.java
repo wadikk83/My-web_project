@@ -1,4 +1,4 @@
-package by.wadikk.repository.model;
+package by.wadikk.repository.model.security;
 
 import lombok.Data;
 
@@ -7,19 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
 @Entity
 @Data
-public class Product {
+public class UserRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-
-    private String categories;
-    private String name;
-    private Long price;
-
-
-
-
+    private Integer userRoleId;
+    private Role role;
 }

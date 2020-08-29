@@ -10,15 +10,14 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-public class Customer {
+public class Article {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String login;
-    private String password;
-    private String firstName;
-    private String lastName;
-    private String adress;
+    private String title;
+    private double price;
+    private String picture;
+    
 
 }
