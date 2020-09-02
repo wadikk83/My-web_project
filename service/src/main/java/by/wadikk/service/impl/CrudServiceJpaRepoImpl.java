@@ -1,5 +1,7 @@
-package by.wadikk.service;
+package by.wadikk.service.impl;
 
+import by.wadikk.repository.model.Article;
+import by.wadikk.service.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -21,13 +23,14 @@ public class CrudServiceJpaRepoImpl<T> implements CrudService<T> {
     }
 
     @Override
-    public T save(T t) {
-        return repo.save(t);
+    public Article save(T t) {
+        //return repo.save(t);
+        return null;
     }
 
     @Override
     public void delete(T t) {
-        repo.delete(t);
+        //repo.delete(t);
 
     }
 

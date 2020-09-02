@@ -24,6 +24,8 @@
         <jackson.version>2.9.6</jackson.version>
         <hibernate.validator.version>6.1.0.Final</hibernate.validator.version>
         <hibernate.entitymanager.version>5.4.18.Final</hibernate.entitymanager.version>
+        <swagger.version>>2.9.2</swagger.version>
+        <bootstrap.version>4.0.0</bootstrap.version>
     </properties>
 
     <dependencyManagement>
@@ -80,9 +82,21 @@
                 <artifactId>hibernate-entitymanager</artifactId>
                 <version>${hibernate.entitymanager.version}</version>
             </dependency>
-
-
-
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>bootstrap</artifactId>
+                <version>${bootstrap.version}</version>
+            </dependency>
 
 
         </dependencies>

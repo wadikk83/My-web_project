@@ -1,7 +1,8 @@
 package by.wadikk.web;
 
-import by.wadikk.service.ProductFilter;
-import by.wadikk.service.ProductService;
+import by.wadikk.repository.model.Article;
+import by.wadikk.service.formfilter.ArticleFilter;
+import by.wadikk.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -14,22 +15,20 @@ import java.util.List;
 public class ProductManagementController {
 
     @Autowired
-    private ProductService productService;
+    private ArticleService articleService;
 
     @GetMapping(path = "/{id}")
-    public Product getById(@PathVariable Integer id) {
-        return productService.getById(id);
+    public Article getById(@PathVariable Integer id) {
+        return articleService.getById(id);
     }
 
     @PostMapping
-    public Product save(@RequestBody Product product) {
-        return productService.save(product);
-
-
+    public Article save(@RequestBody Article product) {
+        return articleService.save(product);
     }
 
     @PostMapping(path = "/query}")
-    public List<Product> getByFilter(@RequestBody ProductFilter productFilter) {
-        return productService.getByFilter(productFilter);
+    public List<Article> getByFilter(@RequestBody ArticleFilter articleFilter) {
+        return articleService.getByFilter(articleFilter);
     }
 }

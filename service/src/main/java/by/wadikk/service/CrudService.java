@@ -1,5 +1,7 @@
 package by.wadikk.service;
 
+import by.wadikk.repository.model.Article;
+
 import java.util.List;
 
 public interface CrudService<T> {
@@ -8,7 +10,7 @@ public interface CrudService<T> {
 
     List<T> getAll();
 
-    T save(T t);
+    Article save(T t);
 
     void delete(T t);
 
