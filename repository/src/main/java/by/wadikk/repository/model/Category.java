@@ -5,7 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 
-@Entity
+
 @Data
 public class Category {
 
@@ -15,9 +15,9 @@ public class Category {
 
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "article_id")
-    private Article article;
+    //@ManyToOne
+    //@JoinColumn(name = "article_id")
+    //private Article article;
 
 
 

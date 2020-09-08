@@ -9,17 +9,18 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 
 @Entity
+@Table(name = "USER_TABLE")
 @Data
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer" })
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false, updatable = false)
     private Integer id;
+
     @NotNull
     @Column(unique = true)
-    private String userName;
+    private String username;
     private String password;
     private String firstName;
     private String lastName;
@@ -28,7 +29,7 @@ public class User {
     @NotNull
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "address_id")
-    private Address address;
+    //@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    //@JoinColumn(name = "address_id")
+    //private Address address;
 }

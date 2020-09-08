@@ -14,8 +14,8 @@ import java.util.List;
 @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE, path = "/products")
 public class ProductManagementController {
 
-    @Autowired
-    private ArticleService articleService;
+ /*  // @Autowired
+    //private ArticleService articleService;
 
     @GetMapping(path = "/{id}")
     public Article getById(@PathVariable Integer id) {
@@ -30,5 +30,5 @@ public class ProductManagementController {
     @PostMapping(path = "/query}")
     public List<Article> getByFilter(@RequestBody ArticleFilter articleFilter) {
         return articleService.getByFilter(articleFilter);
-    }
+    }*/
 }

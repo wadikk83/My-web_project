@@ -18,4 +18,6 @@ public interface ArticleService extends CrudService<Article> {
     void deleteArticleByID(Integer id);
 
     List<Article> getByFilter(ArticleFilter filter);
+
+    List<Article> findFirstArticles();
 }
