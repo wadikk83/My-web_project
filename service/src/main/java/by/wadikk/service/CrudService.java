@@ -10,7 +10,7 @@ public interface CrudService<T> {
 
     List<T> getAll();
 
-    Article save(T t);
+    void save(T t);
 
     void delete(T t);
 

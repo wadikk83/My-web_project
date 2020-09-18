@@ -23,9 +23,8 @@ public class CrudServiceJpaRepoImpl<T> implements CrudService<T> {
     }
 
     @Override
-    public Article save(T t) {
+    public void save(T t) {
         //return repo.save(t);
-        return null;
     }
 
     @Override

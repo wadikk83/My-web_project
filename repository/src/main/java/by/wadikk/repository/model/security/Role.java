@@ -1,17 +1,7 @@
 package by.wadikk.repository.model.security;
 
-import lombok.Data;
+public enum Role {
 
-import javax.persistence.*;
+    ADMIN, USER;
 
-@Entity
-@Data
-public class Role {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer roleId;
-
-    @Column(unique = true)
-    private String name;
 }
