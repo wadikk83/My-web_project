@@ -1,6 +1,7 @@
 package by.wadikk.service;
 
 import by.wadikk.repository.model.User;
+import by.wadikk.repository.model.security.Role;
 import by.wadikk.service.formfilter.UserFilter;
 import org.springframework.data.domain.Page;
 
@@ -17,5 +18,7 @@ public interface UserService extends CrudService<User> {
     boolean checkLoginPresent(String login);
 
     Page<User> getPage(Integer pageNum, Integer pageSize);
+
+    User createUser(String login, String password, String email);
 
 }

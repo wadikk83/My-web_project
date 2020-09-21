@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru" xmlns:th="http://www.w3.org./1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
 <head th:replace="common/header :: common-header"/>
 
 
@@ -23,30 +23,39 @@
                                 <div class="form-group">
                                     <div class="input-icon">
                                         <i data-feather="user"></i>
-                                        <input required="required" type="text" class="form-control"
-                                               placeholder="Username" name="username"
+                                        <input required="required"
+                                               type="text"
+                                               class="form-control"
+                                               placeholder="Login"
+                                               name="login"
                                                th:classappend="${param.error} ? is-invalid">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="input-icon">
                                         <i data-feather="lock"></i>
-                                        <input required="required" type="password" class="form-control"
-                                               placeholder="Password" name="password"
+                                        <input required="required"
+                                               type="password"
+                                               class="form-control"
+                                               placeholder="Password"
+                                               name="password"
                                                th:classappend="${param.error} ? is-invalid">
-                                        <div class="invalid-feedback">Incorrect username or password</div>
+                                        <div class="invalid-feedback">Неверное имя пользователя или пароль</div>
                                     </div>
                                 </div>
                                 <div class="form-group d-flex justify-content-between">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox"
-                                               class="custom-control-input" id="loginRemember" name="remember-me">
+                                               class="custom-control-input"
+                                               id="loginRemember"
+                                               name="remember-me">
                                         <label class="custom-control-label"
                                                for="loginRemember">Remember me</label>
                                     </div>
                                     <a href="#" class="text-primary small reset">Forgot
                                         password ?</a>
                                 </div>
+
                                 <button type="submit"
                                         class="btn btn-primary btn-block">LOGIN
                                 </button>
@@ -74,19 +83,29 @@
                                 <div class="form-group">
                                     <div class="input-icon">
                                         <i data-feather="user"></i>
-                                        <input required="required" type="text" class="form-control"
-                                               th:classappend="${usernameExists} ? is-invalid"
-                                               placeholder="Username" name="username" th:value="${username}">
-                                        <div class="invalid-feedback">Username is already in use</div>
+                                        <input required="required"
+                                               type="text"
+                                               class="form-control"
+                                               th:classappend="${loginExists} ? is-invalid"
+                                               placeholder="Login"
+
+                                               id="login"
+                                               name="login"
+                                               th:value="${login}">
+                                        <div class="invalid-feedback">Login is already in use</div>
 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="input-icon">
-                                        <i data-feather="lock"></i> <input type="password" required="required"
-                                                                           class="form-control" name="new-password"
-                                                                           placeholder="Password"
-                                                                           autocomplete="new-password">
+                                        <i data-feather="lock"></i>
+                                        <input type="password"
+                                               required="required"
+                                               class="form-control"
+                                               id="password"
+                                               name="password"
+                                               placeholder="Password"
+                                               autocomplete="password">
                                     </div>
                                 </div>
                                 <button type="submit"

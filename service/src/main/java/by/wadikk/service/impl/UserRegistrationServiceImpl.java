@@ -2,18 +2,18 @@ package by.wadikk.service.impl;
 
 import by.wadikk.repository.model.User;
 import by.wadikk.repository.model.security.Role;
-import by.wadikk.service.UserRegistrationService;
+import by.wadikk.service.RegistrationService;
 import by.wadikk.service.UserService;
 import by.wadikk.service.dto.UserDetailsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class UserRegistrationServiceImpl implements UserRegistrationService {
+public class UserRegistrationServiceImpl implements RegistrationService {
 
     @Autowired
     private UserService userService;
 
     @Override
-    public @javax.validation.Valid User registerUser(UserDetailsDTO user) {
+    public void registerUser(UserDetailsDTO user) {
         if (userService.checkLoginPresent(user.getLogin())) {
             throw new RuntimeException("User is present");
         }
@@ -26,15 +26,10 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
         u.setRole(Role.USER);
 
         userService.save(u);
-
-        return u;
     }
 
     @Override
     public void activateUser(String login) {
-        User byLogin = userService.getByLogin(login);
-        byLogin.setActive(Boolean.TRUE);
-        userService.save(byLogin);
 
     }
 }

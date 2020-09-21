@@ -1,6 +1,5 @@
 package by.wadikk.service.impl;
 
-import by.wadikk.repository.model.Article;
 import by.wadikk.service.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;

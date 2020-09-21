@@ -12,7 +12,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl extends CrudServiceJpaRepoImpl<User> implements UserService {
@@ -45,5 +47,23 @@ public class UserServiceImpl extends CrudServiceJpaRepoImpl<User> implements Use
     @Override
     public Page<User> getPage(Integer pageNum, Integer pageSize) {
         return userRepository.findAll(PageRequest.of(pageNum, pageSize));
+    }
+
+    @Override
+    public User createUser(String login, String password, String email) {
+        User user = userRepository.findByLogin(login);
+        if (user != null) {
+            return user;
+        } else {
+            user = new User();
+            user.setLogin(login);
+            user.setPassword(password);
+            user.setEmail(email);
+            user.setActive(Boolean.FALSE);
+            user.setRole(Role.USER);
+
+            return userRepository.save(user);
+        }
+
     }
 }

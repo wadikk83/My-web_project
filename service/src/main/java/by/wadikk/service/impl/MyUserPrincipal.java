@@ -1,49 +1,22 @@
-package by.wadikk.repository.model;
+package by.wadikk.service.impl;
 
 
+import by.wadikk.repository.model.User;
 import by.wadikk.repository.model.security.Authority;
 import by.wadikk.repository.model.security.Role;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sun.istack.NotNull;
-import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(name = "USER_TABLE")
-@Data
-@JsonIgnoreProperties(value = {"hibernateLazyInitializer"})
-public class User implements UserDetails{
+public class MyUserPrincipal implements UserDetails {
+    private User user;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-
-    @NotNull
-    @Column(unique = true)
-    private String login;
-    private String password;
-    private String firstName;
-    private String lastName;
-
-    @Email
-    @NotNull
-    private String email;
-
-    private boolean active;
-
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "address_id")
-    private Address address;
-
-    private Role role;
-
+    public MyUserPrincipal(User user) {
+        this.user = user;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -55,8 +28,13 @@ public class User implements UserDetails{
     }
 
     @Override
+    public String getPassword() {
+        return user.getPassword();
+    }
+
+    @Override
     public String getUsername() {
-        return login;
+        return user.getLogin();
     }
 
     @Override

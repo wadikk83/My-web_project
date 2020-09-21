@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @Builder
-public class ArticleFilter {
+public class ProductFilter {
 
     private List<String> category;
     private List<String> brand;
