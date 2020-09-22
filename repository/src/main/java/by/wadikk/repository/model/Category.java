@@ -15,8 +15,14 @@ public class Category {
 
     private String name;
 
-    //private Product product;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 
+    public Category(String name, Product product) {
+        this.name = name;
+        this.product = product;
+    }
 
 
 }

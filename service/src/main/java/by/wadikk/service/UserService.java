@@ -1,8 +1,7 @@
 package by.wadikk.service;
 
 import by.wadikk.repository.model.User;
-import by.wadikk.repository.model.security.Role;
-import by.wadikk.service.formfilter.UserFilter;
+import by.wadikk.service.filter.UserFilter;
 import org.springframework.data.domain.Page;
 
 import java.util.List;

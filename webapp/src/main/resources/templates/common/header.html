@@ -49,10 +49,7 @@
                     <a class="nav-link" th:href="@{/store}"> Товары и услуги </a>
                 </li>
 
-                <!-- <li class="nav-item">
-                   <a class="nav-link" th:href="@{/shopping-cart/cart}">Shopping Cart
-                   <span class="badge badge-primary badge-pill" style="vertical-align: top;" th:text="${shoppingCartItemNumber} > 0 ? ${shoppingCartItemNumber}"></span></a>
-                 </li>      -->
+
             </ul>
             <ul class="navbar-nav ml-auto font-weight-bold">
                 <li class="nav-item">
@@ -65,7 +62,8 @@
                     <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}"> Выйти </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" sec:authorize="hasRole('ADMIN')" th:href="@{/article/article-list}">
+                    <a class="nav-link text-dark" sec:authorize="hasAuthority('ADMIN')" th:href="@{/product/product-list}">
+                    <!--<a class="nav-link text-dark" principle.role=Role.ADMIN th:href="@{/product/product-list}">-->
                         Страничка администратора</a>
                 </li>
             </ul>

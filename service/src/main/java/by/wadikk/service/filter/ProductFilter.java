@@ -1,4 +1,4 @@
-package by.wadikk.service.formfilter;
+package by.wadikk.service.filter;
 
 
 import lombok.Builder;
@@ -11,5 +11,4 @@ import java.util.List;
 public class ProductFilter {
 
     private List<String> category;
-    private List<String> brand;
 }

@@ -16,8 +16,8 @@ public class Product {
 	private int stock;	
 	private double price;
 	private String picture;
-	
-	/*@ManyToOne
-	private Set<Category> categories;*/
+
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Category> categories;
 
 }

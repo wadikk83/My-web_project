@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+<html lang="ru" xmlns:th="http://www.w3.org./1999/xhtml">
 <head th:replace="common/header :: common-header" />
 
 
@@ -32,10 +32,10 @@
               <form th:action="@{/update-user-address}" method="post">
                 <div class="form-row">
                   <div class="form-group col-12">
-                    <label for="billingAddress">Адрес</label>
+                    <label for="streetAddress">Адрес</label>
                     <input type="text"
                            class="form-control"
-                           id="billingAddress"
+                           id="streetAddress"
                            th:name="streetAddress"
                            th:value="${user?.address?.streetAddress}">
                   </div>

@@ -1,4 +1,4 @@
-package by.wadikk.service.formfilter;
+package by.wadikk.service.filter;
 
 
 import lombok.Builder;

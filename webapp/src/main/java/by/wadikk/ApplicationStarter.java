@@ -1,11 +1,9 @@
 package by.wadikk;
 
 
-import by.wadikk.repository.UserRepository;
-import by.wadikk.repository.model.Address;
+import by.wadikk.repository.repository.UserRepository;
 import by.wadikk.repository.model.User;
 import by.wadikk.repository.model.security.Role;
-import com.sun.istack.NotNull;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -13,17 +11,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-import javax.persistence.CascadeType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.Email;
 
 @SpringBootApplication
 @EnableWebSecurity
@@ -46,7 +38,7 @@ public class ApplicationStarter implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        repo.save(user("admin@tut.by", "admin", "admin", Role.ADMIN));
+        //repo.save(user("admin@tut.by", "admin", "admin", Role.ADMIN));
     }
 
     private User user(String email, String login, String password, Role role) {

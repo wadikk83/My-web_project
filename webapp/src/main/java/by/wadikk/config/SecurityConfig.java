@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 
@@ -49,6 +50,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements Init
                 .rememberMe()
                 .rememberMeParameter("rememberme")
                 .userDetailsService(service)
+                .and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/?logout").deleteCookies("remember-me").permitAll()
                 .and()
                 .exceptionHandling()
                 .accessDeniedPage("/access_denied");

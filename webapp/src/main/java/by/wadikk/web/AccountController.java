@@ -2,7 +2,10 @@ package by.wadikk.web;
 
 
 import by.wadikk.repository.model.Address;
+import by.wadikk.repository.model.Order;
 import by.wadikk.repository.model.User;
+import by.wadikk.repository.model.security.Role;
+import by.wadikk.service.OrderService;
 import by.wadikk.service.UserService;
 import by.wadikk.service.impl.UserSecurityServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.List;
 
 
 @Controller
@@ -27,9 +31,38 @@ public class AccountController {
     private UserService userService;
 
     @Autowired
-    private UserSecurityServiceImpl userSecurityService;;
+    private OrderService orderService;
 
-     @PostMapping("/update-user-info")
+    @Autowired
+    private UserSecurityServiceImpl userSecurityService;
+
+    @RequestMapping("/admin")
+    public String admin(Model model, Authentication authentication) {
+        User user = (User) authentication.getPrincipal();
+        if (user.getRole() == Role.ADMIN) {
+            return "adminHome";
+        }
+        else return "index";
+
+    }
+
+    @RequestMapping("/order-detail")
+    public String orderDetail(@RequestParam("order") Integer id, Model model) {
+        Order order = orderService.findOrderWithDetails(id);
+        model.addAttribute("order", order);
+        return "orderDetails";
+    }
+
+    @RequestMapping("/my-orders")
+    public String myOrders(Model model, Principal principal) {
+        User user = userService.getByLogin(principal.getName());
+        model.addAttribute("user", user);
+        List<Order> orders = orderService.findByUser(user);
+        model.addAttribute("orders", orders);
+        return "myOrders";
+    }
+
+    @PostMapping("/update-user-info")
     public String updateUserInfo(@ModelAttribute("user") User user,
                                  @RequestParam("newPassword") String newPassword,
                                  Model model, Principal principal) throws Exception {
@@ -42,8 +75,8 @@ public class AccountController {
 
         currentUser.setFirstName(user.getFirstName());
         currentUser.setLastName(user.getLastName());
-        currentUser.setLogin(user.getLogin());
-        currentUser.setEmail(user.getEmail());
+        //currentUser.setLogin(user.getLogin());
+        //currentUser.setEmail(user.getEmail());
         userService.save(currentUser);
 
         model.addAttribute("updateSuccess", true);

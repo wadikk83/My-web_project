@@ -1,4 +1,4 @@
-package by.wadikk.repository;
+package by.wadikk.repository.repository;
 
 import by.wadikk.repository.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
