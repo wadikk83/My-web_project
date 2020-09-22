@@ -26,5 +26,5 @@ public interface ProductService extends CrudService<Product> {
     List<String> getAllCategories();
 
     Page<Product> findProductByCriteria(Pageable pageable, Integer priceLow, Integer priceHigh,
-                                        List<String> categories, String search);
+                                        String searchTitle);
 }

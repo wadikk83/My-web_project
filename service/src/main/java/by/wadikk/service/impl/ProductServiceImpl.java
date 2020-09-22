@@ -2,6 +2,7 @@ package by.wadikk.service.impl;
 
 import by.wadikk.repository.repository.ProductRepository;
 import by.wadikk.repository.model.Product;
+import by.wadikk.repository.repository.ProductSpecification;
 import by.wadikk.service.ProductService;
 import by.wadikk.service.filter.ProductFilter;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -60,8 +61,8 @@ public class ProductServiceImpl extends CrudServiceJpaRepoImpl<Product> implemen
     }
 
     @Override
-    public Page<Product> findProductByCriteria(Pageable pageable, Integer priceLow, Integer priceHigh, List<String> categories, String search) {
-        //Page<Product> page = productRepository.findAll();
+    public Page<Product> findProductByCriteria(Pageable pageable, Integer priceLow, Integer priceHigh, String searchTitle) {
+        Page<Product> page = productRepository.findAll(ProductSpecification.filterBy(priceLow, priceHigh, searchTitle), pageable);
         return null;
     }
 }

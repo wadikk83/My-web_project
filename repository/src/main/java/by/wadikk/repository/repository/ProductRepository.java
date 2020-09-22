@@ -3,11 +3,12 @@ package by.wadikk.repository.repository;
 
 import by.wadikk.repository.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface ProductRepository extends JpaRepository<Product, Integer> {
+public interface ProductRepository extends JpaRepository<Product, Integer>, JpaSpecificationExecutor<Product> {
 
     @Query("SELECT DISTINCT c.name FROM Category c")
     List<String> findAllCategories();
